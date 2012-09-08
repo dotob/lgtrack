@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+  <%= render "layouts/head" %>
+  <body>
+  <%= render "layouts/navbar" %>
+    <div class="container">
+      <div class="content">
+        <div class="row">
+          <div class="span4 offset4">
+            <% flash.each do |name, msg| %>
+              <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+                <a class="close" data-dismiss="alert">&#215;</a>
+                <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="span9">
+            <%= yield %>
+          </div>
+        </div><!--/row-->
+      </div><!--/content-->
+    <%= render "layouts/footer" %>
+  </body>
+</html>
