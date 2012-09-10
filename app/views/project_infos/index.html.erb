@@ -1,0 +1,29 @@
+<h1>Listing project_infos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Duration</th>
+    <th>Description</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project_infos.each do |project_info| %>
+  <tr>
+    <td><%= project_info.name %></td>
+    <td><%= project_info.duration %></td>
+    <td><%= project_info.description %></td>
+    <td><%= project_info.user %></td>
+    <td><%= link_to 'Show', project_info %></td>
+    <td><%= link_to 'Edit', edit_project_info_path(project_info) %></td>
+    <td><%= link_to 'Destroy', project_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project info', new_project_info_path %>

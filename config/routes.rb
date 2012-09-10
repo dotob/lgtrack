@@ -1,6 +1,8 @@
 Lgtrack::Application.routes.draw do
  
-  root :to => 'home#index'
+  resources :project_infos
+
+  root :to => 'project_infos#new'
   
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 

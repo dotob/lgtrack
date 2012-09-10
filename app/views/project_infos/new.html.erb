@@ -1,0 +1,9 @@
+<h1>neuen eintrag erstellen</h1>
+
+<%= render 'form' %>
+
+<ul>
+<% @project_infos.each do |pi| %>
+	<li><%= pi.name %>:<%= pi.description %></li>
+<% end %>
+</ul>
