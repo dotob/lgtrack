@@ -21,7 +21,7 @@ class ProjectInfo < ActiveRecord::Base
   end
 
   def self.grouped_by_project
-	groups = ProjectInfo.order("created_at DESC").group("name")
+	groups = ProjectInfo.select(:name).order("created_at DESC").group(:name)
 	ret = Hash.new
 	groups.each{|g|
 		ret[g.name] = ProjectInfo.where(:name => g.name).sum(:duration)
