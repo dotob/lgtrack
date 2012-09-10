@@ -17,4 +17,13 @@ class ProjectInfo < ActiveRecord::Base
 	end
 	return pi
   end
+
+  def self.grouped_by_project
+	groups = ProjectInfo.order("created_at DESC").group("name")
+	ret = Hash.new
+	groups.each{|g|
+		ret[g.name] = ProjectInfo.where(:name => g.name).sum(:duration)
+	}
+	return ret;
+  end
 end

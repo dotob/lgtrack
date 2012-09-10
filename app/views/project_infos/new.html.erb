@@ -2,8 +2,16 @@
 
 <%= render 'form' %>
 
-<ul>
-<% @project_infos.each do |pi| %>
-	<li><%= pi.name %>:<%= pi.description %></li>
-<% end %>
+<h1>übersicht</h1>
+<ul class="unstyled">
+	<% @project_infos_grouped.each do |name, duration| %>
+		<li><h3><%= duration %> : <%= name %></h3></li>
+	<% end %>
+</ul>
+
+<h1>historie</h1>
+<ul class="unstyled">
+	<% @project_infos.each do |pi| %>
+		<li><h3><%= pi.duration %> : <%= pi.name %> => <%= pi.description %></h3></li>
+	<% end %>
 </ul>

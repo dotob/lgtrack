@@ -1,8 +1,10 @@
+# encoding: utf-8
 class ProjectInfosController < ApplicationController
   # GET /project_infos/new
   # GET /project_infos/new.json
   def new
-    @project_infos = ProjectInfo.all
+    @project_infos = ProjectInfo.order("created_at DESC")
+    @project_infos_grouped = ProjectInfo.grouped_by_project
   end
 
   # POST /project_infos
@@ -16,7 +18,7 @@ class ProjectInfosController < ApplicationController
       is_neu = "neues "
     end
 
-    flash[:notice] = "eintrag fur #{is_neu}projekt #{project_info.name} angelegt"
+    flash[:notice] = "eintrag für #{is_neu}projekt #{project_info.name} angelegt"
     redirect_to root_path
   end
 
