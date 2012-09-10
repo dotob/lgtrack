@@ -2,21 +2,21 @@
 
 <%= form_tag project_infos_path, :class => "form-inline" do %>
   </br>
-  <%= text_field_tag "combi", nil, :placeholder => 'project info eintragen...', :class => "span6" %>
+  <%= text_field_tag "combi", nil, :placeholder => 'project info eintragen...', :class => "span6 einzug" %>
   <%= submit_tag("speichern", :class => "btn") %>
 <% end %>
-<div id="match"></div>
+<div id="match" class="einzug"></div>
 
 <h1>übersicht</h1>
 <ul class="unstyled">
 	<% @project_infos_grouped.each do |name, duration| %>
-		<li><h3><%= duration %> : <%= name %></h3></li>
+		<li class="einzug"><h3><%= duration %> : <%= name %></h3></li>
 	<% end %>
 </ul>
 
 <h1>historie</h1>
 <ul class="unstyled">
 	<% @project_infos.each do |pi| %>
-		<li><h3><%= pi.duration %> : <%= pi.name %> => <%= pi.description %></h3></li>
+		<li class="einzug"><h3><%= pi.duration %> : <%= pi.name %> => <%= pi.description %> (<%= pi.user.name %>)</h3></li>
 	<% end %>
 </ul>

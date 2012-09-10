@@ -10,7 +10,7 @@ class ProjectInfosController < ApplicationController
   # POST /project_infos
   # POST /project_infos.json
   def create
-    project_info = ProjectInfo.create_me(params[:combi])
+    project_info = ProjectInfo.create_me(params[:combi], current_user)
     project_info.save
     if ProjectInfo.find_by_name(project_info.name)
       is_neu = ""

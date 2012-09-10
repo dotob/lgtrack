@@ -1,8 +1,8 @@
 class ProjectInfo < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :description, :duration, :name
+  attr_accessible :description, :duration, :name, :user
 
-  def self.create_me(combi)
+  def self.create_me(combi, user)
   	pi = ProjectInfo.new
   	# parse combi entry
   	# should have the format: <duration> <projectname> <description>
@@ -12,8 +12,10 @@ class ProjectInfo < ActiveRecord::Base
 	  	pi.duration = parts[1].to_f
 	  	pi.name = parts[2]
 	  	pi.description = parts[3]
+	  	pi.user = user
   	else
   		#fail
+  		pi = null
 	end
 	return pi
   end
